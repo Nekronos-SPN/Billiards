@@ -26,6 +26,7 @@ pygame.display.set_caption("Pool!")
 
 
 def resize_cue(image):
+    """Resizes display cue to the screen resolution"""
     ratio = (screen.get_size()[1] - 120) / image.get_size()[1]
     widht = ratio * image.get_size()[0]
     height = ratio * image.get_size()[1]
@@ -40,9 +41,8 @@ def resize_cue(image):
 
 
 # All cue skins
-dragon_cue = pygame.image.load("assets/images/dragon_long_cue.png").convert_alpha()
-dragon_cue_display = pygame.image.load("assets/images/dragon_long_cue_display.png")
-dragon_cue_display = resize_cue(dragon_cue_display)
+dragon_cue = pygame.image.load("assets/images/dragon_long_cue.png")
+dragon_cue = resize_cue(dragon_cue)
 
 
 # Sets up colors
