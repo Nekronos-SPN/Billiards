@@ -84,7 +84,7 @@ class Cue:
 
     def __resize(self, image, screen):
         """Resizes game cue to the screen resolution"""
-        ratio = (screen.get_size()[1] - 300) / image.get_size()[1]
+        ratio = (screen.get_size()[1] - 400) / image.get_size()[1]
         widht = ratio * image.get_size()[0]
         height = ratio * image.get_size()[1]
         resized_image = pygame.transform.scale(
