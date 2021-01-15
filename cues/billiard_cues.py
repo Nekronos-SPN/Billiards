@@ -19,7 +19,7 @@ class Cue:
     def __calc_pos(self, ball):
         """Transform the given angle to a point of a circumference"""
 
-        sep = 10
+        sep = 2
         # Contiguous cathetus / hypotenuse
         cosine = dist(
             [ball.x_pos, ball.y_pos],
@@ -94,4 +94,5 @@ class Cue:
                 int(height),
             ),
         )
+        resized_image = pygame.transform.rotate(resized_image, 10)
         return resized_image
