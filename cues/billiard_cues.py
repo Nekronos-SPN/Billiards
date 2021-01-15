@@ -15,11 +15,10 @@ class Cue:
         self.att_ball = ball
         self.skin = self.__resize(cue_skin, screen)
         self.angle = 0
+        self.sep = 2  # Separation from the ball attached
 
     def __calc_pos(self, ball):
         """Transform the given angle to a point of a circumference"""
-
-        sep = 2
         # Contiguous cathetus / hypotenuse
         cosine = dist(
             [ball.x_pos, ball.y_pos],
@@ -41,22 +40,22 @@ class Cue:
             pygame.mouse.get_pos()[0] < ball.x_pos
             and pygame.mouse.get_pos()[1] < ball.y_pos
         ):
-            cue_x = -cosine * (ball.radius + sep) + ball.x_pos
-            cue_y = -sine * (ball.radius + sep) + ball.y_pos
+            cue_x = -cosine * (ball.radius + self.sep) + ball.x_pos
+            cue_y = -sine * (ball.radius + self.sep) + ball.y_pos
             self.angle = -acos(cosine) * 180 / pi - 90
         elif pygame.mouse.get_pos()[0] < ball.x_pos:
-            cue_x = -cosine * (ball.radius + sep) + ball.x_pos
-            cue_y = sine * (ball.radius + sep) + ball.y_pos
+            cue_x = -cosine * (ball.radius + self.sep) + ball.x_pos
+            cue_y = sine * (ball.radius + self.sep) + ball.y_pos
             self.angle = -acos(sine) * 180 / pi
 
         elif pygame.mouse.get_pos()[1] < ball.y_pos:
-            cue_x = cosine * (ball.radius + sep) + ball.x_pos
-            cue_y = -sine * (ball.radius + sep) + ball.y_pos
+            cue_x = cosine * (ball.radius + self.sep) + ball.x_pos
+            cue_y = -sine * (ball.radius + self.sep) + ball.y_pos
             self.angle = acos(cosine) * 180 / pi + 90
 
         else:
-            cue_x = cosine * (ball.radius + sep) + ball.x_pos + 2
-            cue_y = sine * (ball.radius + sep) + ball.y_pos + 2
+            cue_x = cosine * (ball.radius + self.sep) + ball.x_pos + 2
+            cue_y = sine * (ball.radius + self.sep) + ball.y_pos + 2
             self.angle = acos(sine) * 180 / pi
         return cue_x, cue_y
 
