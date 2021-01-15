@@ -14,7 +14,7 @@ from balls.ball_collision import check_collision
 ################ Main Program ################
 def draw_update():
     screen.blit(background, (0, 0))
-    screen.blit(dragon_cue_display, (30, 50))
+    screen.blit(dragon_cue, (30, 50))
 
     main_table.draw()
 
@@ -57,7 +57,7 @@ main_table = BilliardTable()
 
 # Balls are created
 user_ball = PlayerBall(main_table, [70, main_table.height / 2])
-user_ball.velocity = 10
+user_ball.velocity = 0
 user_ball.direction = [1, 0]
 game_balls = set_balls(main_table, user_ball, Solids, Stripes)
 

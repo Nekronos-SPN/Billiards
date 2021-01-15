@@ -171,7 +171,7 @@ class PlayerBall(BilliardBall):
 
     def __init__(self, table, position):
         super().__init__(table, position)
-        self.cue = Cue(self, dragon_cue)
+        self.cue = Cue(self, dragon_cue, screen)
 
     def draw(self):
         super().draw()
