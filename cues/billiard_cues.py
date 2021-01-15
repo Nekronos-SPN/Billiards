@@ -10,10 +10,10 @@ import pygame
 class Cue:
     """Cue that the player will be able to choose"""
 
-    def __init__(self, ball, cue_skin):
+    def __init__(self, ball, cue_skin, screen):
         self.x_pos, self.y_pos = ball.x_pos, ball.y_pos
         self.att_ball = ball
-        self.skin = cue_skin
+        self.skin = self.__resize(cue_skin, screen)
         self.angle = 0
 
     def __calc_pos(self, ball):
@@ -62,7 +62,7 @@ class Cue:
 
     def draw(self, screen):
         cue = self.__rotate(self.skin, self.__calc_pos(self.att_ball), self.angle)
-        screen.blit(cue[0], cue[1])
+        screen.blit(cue[0], cue[1])  # Draws the cue arround the cue ball
 
     def __rotate(self, image, pos, angle):
         """Rotate an image using its apex as de center of rotation"""
@@ -81,3 +81,17 @@ class Cue:
 
         rotated_image = pygame.transform.rotate(image, angle)
         return rotated_image, origin
+
+    def __resize(self, image, screen):
+        """Resizes game cue to the screen resolution"""
+        ratio = (screen.get_size()[1] - 300) / image.get_size()[1]
+        widht = ratio * image.get_size()[0]
+        height = ratio * image.get_size()[1]
+        resized_image = pygame.transform.scale(
+            image,
+            (
+                int(widht),
+                int(height),
+            ),
+        )
+        return resized_image
