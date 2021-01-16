@@ -53,7 +53,7 @@ class BilliardBall(ABC):
         if velocity <= 0:
             self.__velocity = 0
         elif velocity > 10:
-            self.__velocity = 20
+            self.__velocity = 10
         else:
             self.__velocity = velocity
 
